@@ -1,0 +1,7 @@
+Rust 中孤儿规则
+we can’t implement external traits on external types.
+we can’t implement theDisplaytrait onVec<T>within ouraggregatorcrate, becauseDisplayandVec<T>are defined in the standard library and aren’t local to ouraggregatorcrate.
+This restriction is part of a property of programs calledcoherence, and more specifically theorphan rule, so named because the parent type is not present.
+This rule ensures that other people’s code can’t break your code and vice versa.
+Without the rule, two crates could implement the same trait for the same type, and Rust wouldn’t know which implementation to use.
+
